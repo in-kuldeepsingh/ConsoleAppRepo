@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 using Microsoft.ApplicationInsights.Extensibility;
 using System.Threading;
+using ConsoleApp01.SQL;
 
 namespace ConsoleApp01
 {
@@ -22,8 +23,8 @@ namespace ConsoleApp01
             //CosmosOperation p = new CosmosOperation();
             //await p.RunDemoAsync01();
 
-            //ImageProcessing.RenameImagesByDate();
-            ImageProcessing.RenameMOVbyDate();
+            ImageProcessing.RenameFilesByDate();
+            //ImageProcessing.RenameMOVbyDate();
 
             //AppInsights.GenerateAppInsightsData();
             //CopyDashboard.CopyDashboards();
@@ -32,6 +33,8 @@ namespace ConsoleApp01
             //Console.WriteLine("Completed. Press enter to Exit");
             //GenerateTestDataTableStorage.GenerateTestData();
             //ConsoleApp01.Web.ReadWebContent.ReadWebPageContent();
+
+            //ExecuteStoredProcedure.RunQuery();
 
             Console.ReadLine();
         }

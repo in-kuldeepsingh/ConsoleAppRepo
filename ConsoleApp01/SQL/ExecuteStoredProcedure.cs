@@ -4,11 +4,45 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 namespace ConsoleApp01.SQL
 {
-    class ExecuteStoredProcedure
+    public class ExecuteStoredProcedure
     {
+        public static void RunQuery()
+        {
+            string connectionString = "Data Source=34.106.203.228;Initial Catalog=flowdatabase-01;User ID=sqlserver;Password=FlowsqlDatabase@1234";
+
+            string createTableQuery = @"
+                CREATE TABLE YourTableName (
+                    ID INT PRIMARY KEY,
+                    Name NVARCHAR(50),
+                    Age INT
+                )";
+            try
+            {
+                // Create a SqlConnection object
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    // Open the connection
+                    connection.Open();
+
+                    // Create a SqlCommand object with the create table query
+                    using (SqlCommand command = new SqlCommand(createTableQuery, connection))
+                    {
+                        // Execute the SQL command to create the table
+                        command.ExecuteNonQuery();
+                        Console.WriteLine("Table created successfully.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+        }
+
         private static void WriteDatasetToTextFile()
         {
             DataSet ds = new DataSet();
